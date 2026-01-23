@@ -1,0 +1,20 @@
+//Leetcode (Medium)
+//Maximum Distance in Arrays
+class Solution {
+    public int maxDistance(List<List<Integer>> arrays) {
+        int res=0;
+        int min=arrays.get(0).get(0);
+        int max=arrays.get(0).get(arrays.get(0).size()-1);
+        for(int i=1;i<arrays.size();i++)
+            {
+                int cmin=arrays.get(i).get(0);
+                int cmax=arrays.get(i).get(arrays.get(i).size()-1);
+                res=Math.max(res,Math.max(Math.abs(cmin-max),Math.abs(cmax-min)));
+                if(cmin<min)
+                    min=cmin;
+                if(cmax>max)
+                    max=cmax;
+            }
+        return res;
+    }
+}
