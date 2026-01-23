@@ -1,0 +1,27 @@
+//Binary subarray with sum
+//Difficulty level: Medium
+
+class Solution {
+    public int numberOfSubarrays(int[] arr, int target) {
+        return countSubArrays(arr,target)-countSubArrays(arr,target-1);
+    }
+    
+    public static int countSubArrays(int[] a,int target)
+    {
+        if(target<0)
+           return 0;
+        int l=0,r=0,count=0,sum=0;
+        while(r<a.length)
+        {
+            sum+=a[r];
+            while(sum>target)
+            {
+                sum-=a[l];
+                l++;
+            }
+            count=count+(r-l+1);
+            r++;
+        }
+        return count;
+    }
+}
