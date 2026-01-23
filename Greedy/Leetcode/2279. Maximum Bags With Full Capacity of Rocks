@@ -1,0 +1,30 @@
+//Leetcode (Medium)
+//2279. Maximum Bags With Full Capacity of Rocks
+class Solution {
+    public int maximumBags(int[] capacity, int[] rocks, int additionalRocks) {
+        int[] diff=new int[rocks.length];
+        for(int i=0;i<rocks.length;i++)
+        {
+            diff[i]=Math.abs(rocks[i]-capacity[i]);
+        }
+        Arrays.sort(diff);
+        int c=0;
+        for(int i=0;i<diff.length;i++)
+        {
+            if(additionalRocks==0)
+                break;
+            else
+            {
+                if(diff[i]==0)
+                    c++;
+                else if(diff[i]<=additionalRocks)
+                {
+                    c++;
+                    additionalRocks-=diff[i];
+                }
+                
+            }
+        }
+        return c;
+    }
+}
