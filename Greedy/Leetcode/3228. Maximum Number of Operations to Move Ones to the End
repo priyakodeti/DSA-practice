@@ -1,0 +1,22 @@
+//LEETCODE (MEDIUM)
+//3228. Maximum Number of Operations to Move Ones to the End
+
+class Solution {
+    public int maxOperations(String s) {
+        int countofones=0,res=0;
+
+        int i=0;
+        while(i<s.length())
+        {
+            if(s.charAt(i)=='0')
+            {
+                res+=countofones;
+                while(i<s.length() && s.charAt(i)=='0')
+                    i++;
+            }
+            countofones++;
+            i++;
+        }
+        return res;
+    }
+}
