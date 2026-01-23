@@ -1,0 +1,29 @@
+//Subarrays with K Distinct Integers
+//Difficulty level: Medium
+
+class Solution {
+    
+    public static int countSubarray(int[] arr,int k)
+    {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int l=0,r=0,count=0;
+        while(r<arr.length)
+        {
+            map.put(arr[r],map.getOrDefault(arr[r],0)+1);
+            while(map.size()>k)
+            {
+                map.put(arr[l],map.get(arr[l])-1);
+                if(map.get(arr[l])==0)
+                    map.remove(arr[l]);
+                l++;
+            }
+            if(map.size()<=k)
+                count=count+(r-l+1);
+            r++;
+        }
+        return count;
+    }
+    static int exactlyK(int arr[], int k) {
+        return countSubarray(arr,k)-countSubarray(arr,k-1);
+    }
+}
