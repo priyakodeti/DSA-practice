@@ -1,0 +1,11 @@
+//Maximum product of two numbers
+
+class Solution {
+    public static int maxProduct(int[] arr) {
+        
+        int n=arr.length;
+        Arrays.sort(arr);
+        int max=arr[n-1]*arr[n-2];
+        return max;
+    }
+}
