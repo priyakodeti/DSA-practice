@@ -1,0 +1,21 @@
+//2824. Count Pairs Whose Sum is Less than Target
+//Difficulty level: Easy
+
+class Solution {
+    public int countPairs(List<Integer> nums, int target) {
+        Collections.sort(nums);
+        int l=0,r=nums.size()-1,c=0;
+        while(l<r)
+            {
+                int sum=nums.get(l)+nums.get(r);
+                if(sum<target)
+                {
+                    c+=r-l;
+                    l++;
+                }
+                else
+                    r--;
+            }
+        return c;
+    }
+}
