@@ -1,0 +1,28 @@
+//1768. Merge Strings Alternately
+//Difficulty level: Easy
+
+class Solution {
+    public String mergeAlternately(String word1, String word2) {
+        int i=0,j=0;
+        int m=word1.length();
+        int n=word2.length();
+        StringBuilder res=new StringBuilder();
+        while(i<m && j<n)
+        {
+            res.append(word1.charAt(i));
+            res.append(word2.charAt(j));
+            i++;
+            j++;
+        }
+        while(i<m)
+        {
+            res.append(word1.charAt(i++));
+        }
+        while(j<n)
+        {
+            res.append(word2.charAt(j++));
+        }
+
+        return res.toString();
+    }
+}
