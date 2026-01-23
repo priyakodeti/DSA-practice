@@ -1,0 +1,33 @@
+//Two sum -Pairs with 0 Sum
+//Difficulty level: Easy
+
+class Solution {
+    public static ArrayList<ArrayList<Integer>> getPairs(int[] arr) {
+      
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        Arrays.sort(arr);
+        int l=0,r=arr.length-1;
+        while(l<r)
+        {
+            int sum=arr[l]+arr[r];
+            if(sum==0)
+            {
+                ArrayList<Integer> al=new ArrayList<>();
+                al.add(arr[l]);
+                al.add(arr[r]);
+                ans.add(al);
+                int leftVal=arr[l];
+                int rightVal=arr[r];
+                while(l<r && arr[l]==leftVal)
+                    l++;
+                while(l<r && arr[r]==rightVal)
+                    r--;
+            }
+            else if(sum>0)
+                r--;
+            else 
+                l++;
+        }
+        return ans;
+    }
+}
