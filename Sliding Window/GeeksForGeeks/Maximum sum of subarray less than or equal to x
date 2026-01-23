@@ -1,0 +1,25 @@
+//Maximum sum of subarray less than or equal to x
+//Difficulty level: Medium
+
+class Solution {
+    public long findMaxSubarraySum(int[] arr, long k) {
+        
+        long maxsum=0;
+        int sum=0,l=0,r=0;
+        while(r<arr.length)
+        {
+            sum+=arr[r];
+            while(sum>k)
+            {
+                sum-=arr[l];
+                l++;
+            }
+            if(sum<=k)
+            {
+                maxsum=Math.max(sum,maxsum);
+            }
+            r++;
+        }
+        return maxsum;
+    }
+}
