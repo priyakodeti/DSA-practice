@@ -1,0 +1,35 @@
+//Smallest window containing all characters
+//Difficulty level: Hard
+
+class Solution {
+    public static String smallestWindow(String s, String p) {
+        
+        int l=0,r=0,minlen=Integer.MAX_VALUE,startIndex=-1,reqCount=p.length();
+        int[] freq=new int[26];
+        for(int i=0;i<p.length();i++)
+            freq[p.charAt(i)-'a']++;
+            
+        char[] ch=s.toCharArray();
+        while(r<s.length())
+        {
+            if(freq[ch[r]-'a']>0)
+                reqCount--;
+            freq[ch[r]-'a']--;
+            while(reqCount==0)
+            {
+                if(r-l+1<minlen)
+                {
+                    minlen=r-l+1;
+                    startIndex=l;
+                }
+                freq[ch[l]-'a']++;
+                if(freq[ch[l]-'a']>0)
+                    reqCount++;
+                l++;
+            }
+           
+            r++;
+        }
+        return (startIndex==-1)?"":s.substring(startIndex,startIndex+minlen);
+    }
+}
