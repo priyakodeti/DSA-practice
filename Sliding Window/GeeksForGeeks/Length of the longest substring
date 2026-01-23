@@ -1,0 +1,26 @@
+//Length of the longest substring
+//Difficulty level: Medium
+
+class Solution {
+    int longestUniqueSubstring(String s) {
+     
+        int maxlen=0,i=0,j=0;
+        HashMap<Character,Integer> map=new HashMap<>();
+        char[] ch=s.toCharArray();
+        while(j<s.length())
+        {
+            map.put(ch[j],map.getOrDefault(ch[j],0)+1);
+            if(map.size()<j-i+1)
+            {
+                map.put(ch[i],map.get(ch[i])-1);
+                if(map.get(ch[i])==0)
+                    map.remove(ch[i]);
+                i++;
+            }
+            if(map.size()==j-i+1)
+                maxlen=Math.max(maxlen,j-i+1);
+            j++;
+        }
+        return maxlen;
+    }
+}
