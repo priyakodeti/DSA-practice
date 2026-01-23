@@ -1,0 +1,25 @@
+//Activity Selection problem
+class Solution {
+    public int activitySelection(int[] start, int[] finish) {
+      
+        int[][] v=new int[start.length][2];
+        for(int i=0;i<start.length;i++)
+        {
+            v[i][0]=start[i];
+            v[i][1]=finish[i];
+        }
+        Arrays.sort(v,(a,b)->a[1]-b[1]);
+        
+        int i=1,j=0,count=1;
+        while(i<start.length)
+        {
+            if(v[i][0]>v[j][1])
+            {
+                count++;
+                j=i;
+            }
+            i++;
+        }
+        return count;
+    }
+}
