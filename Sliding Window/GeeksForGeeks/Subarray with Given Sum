@@ -1,0 +1,35 @@
+//Subarray with Given Sum
+//Difficulty level: Easy
+
+class Solution {
+
+    // Function to find a continuous sub-array which adds up to a given number.
+    public static ArrayList<Integer> subarraySum(int[] arr, int target) {
+        
+        if(target==0)
+           return  new ArrayList<>();
+        ArrayList<Integer> al=new ArrayList<>();
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int csum=0;
+        for(int i=0;i<arr.length;i++)
+        {
+            csum+=arr[i];
+            if(csum==target)
+            {
+                al.add(1);
+                al.add(i+1);
+                break;
+            }
+            else if(map.containsKey(csum-target))
+            {
+               
+                al.add(map.get(csum-target)+2);
+                al.add(i+1);
+                break;
+            }
+            if(!map.containsKey(csum))
+                map.put(csum,i);
+        }
+        return al;
+    }
+}
