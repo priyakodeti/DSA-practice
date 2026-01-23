@@ -1,0 +1,19 @@
+//Minimum number of Coins solution
+class Solution {
+    public int findMin(int v) {
+        int[] m={1,2,5,10};
+        int count=0,k=m.length-1;
+        while(v!=0)
+        {
+            if(v<m[k])
+                k--;
+                
+            while(v>=m[k])
+            {
+                v-=m[k];
+                count++;
+            }
+        }
+        return count;
+    }
+}
