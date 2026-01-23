@@ -1,0 +1,22 @@
+//Leetcode (Medium)
+//2244. Minimum Rounds to Complete All Tasks
+class Solution {
+    public int minimumRounds(int[] tasks) {
+        
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<tasks.length;i++)
+            map.put(tasks[i],map.getOrDefault(tasks[i],0)+1);
+        int c=0;
+        for(int i:map.values())
+        {
+            if(i==1)
+                return -1;
+            
+            if(i%3==1 || i%3==2) 
+                c=c+(i/3)+1;
+            else
+                c+=(i/3);
+        }
+        return c;
+    }
+}
