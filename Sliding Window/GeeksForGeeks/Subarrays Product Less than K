@@ -1,0 +1,27 @@
+//Subarrays Product Less than K
+//Difficulty level: Medium
+
+class Solution {
+
+    public long countSubArrayProductLessThanK(long arr[], int n, long k) {
+        int l=0,r=0;
+        
+        long p=1,count=0;
+        if(k<=0)
+        return 0;
+        while(r<n)
+        {
+            p=p*arr[r];
+            while(p>=k && l<=r)
+            {
+                p=p/arr[l];
+                l++;
+            }
+            count=count+(r-l+1);
+            r++;
+            
+        }
+        return count;
+        
+    }
+}
