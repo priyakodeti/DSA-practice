@@ -1,0 +1,25 @@
+//Count Subarray with k odds
+//Difficulty level: Medium
+
+class Solution {
+    public int countSubarrays(int[] arr,int k)
+    {
+        return count(arr,k)-count(arr,k-1);
+    }
+    public int count(int[] arr, int k) {
+        
+        int sum=0,l=0,r=0,ans=0;
+        while(r<arr.length)
+        {
+            sum+=(arr[r]%2);
+            while(sum>k)
+            {
+                sum-=(arr[l]%2);
+                l++;
+            }
+            ans+=(r-l+1);
+            r++;
+        }
+        return ans;
+    }
+}
