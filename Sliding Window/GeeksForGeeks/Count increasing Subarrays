@@ -1,0 +1,19 @@
+//Count increasing Subarrays
+//Difficulty level: Easy
+
+class Solution {
+    public int countIncreasing(int[] arr) {
+        
+        int l=0,r=1,count=0;
+        
+        while(r<arr.length)
+        {
+            if(arr[r]>arr[r-1])
+                count+=(r-l);
+            else
+                l=r;
+            r++;
+        }
+        return count;
+    }
+}
