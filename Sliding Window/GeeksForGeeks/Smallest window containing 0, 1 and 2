@@ -1,0 +1,25 @@
+//Smallest window containing 0, 1 and 2
+//Difficulty level: Medium
+
+class Solution {
+    public int smallestSubstring(String s) {
+        
+        int l=0,r=0,minlen=Integer.MAX_VALUE;
+        int[] freq=new int[3];
+        
+        while(r<s.length())
+        {
+            freq[s.charAt(r)-'0']++;
+            while(freq[0]>0 && freq[1]>0 && freq[2]>0)
+            {
+                minlen=Math.min(r-l+1,minlen);
+                freq[s.charAt(l)-'0']--;
+                l++;
+            }
+            r++;
+        }
+        if(minlen==Integer.MAX_VALUE)
+            return -1;
+        return minlen;
+    }
+};
