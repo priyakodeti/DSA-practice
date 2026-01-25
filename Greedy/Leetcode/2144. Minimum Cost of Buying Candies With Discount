@@ -1,0 +1,35 @@
+//2144. Minimum Cost of Buying Candies With Discount
+//Difficulty level: Easy
+
+class Solution {
+    public int minimumCost(int[] cost) {
+        if(cost.length==1)
+            return cost[0];
+        if(cost.length==2)
+        {
+            return cost[0]+cost[1];
+        }
+        Arrays.sort(cost);
+        int l=0,r=cost.length-1;
+        while(l<r)
+        {
+            int t=cost[l];
+            cost[l]=cost[r];
+            cost[r]=t;
+            l++;
+            r--;
+        }
+        int sum=0,k=0;
+        for(int i=0;i<cost.length;i++)
+        {
+            if(k==2 )
+            {
+                k=0;
+                continue;
+            }
+            sum+=cost[i];
+            k++;
+        }
+        return sum;
+    }
+}
