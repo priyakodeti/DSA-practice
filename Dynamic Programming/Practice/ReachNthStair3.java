@@ -1,3 +1,5 @@
+//Problem: Count ways to reach nth stair with 1 or 2 or 3 steps using DP with Tabulation
+
 import java.util.*;
 class ReachNthStair3
 {
@@ -23,4 +25,5 @@ class ReachNthStair3
 		int res=countWays(n);
 		System.out.print(res);
 	}
+
 }
