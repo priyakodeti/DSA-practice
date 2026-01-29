@@ -1,3 +1,5 @@
+//Problem: Count ways to reach nth stair with 1 or 2 steps using DP 
+
 import java.util.*;
 class NthStair
 {
@@ -17,4 +19,5 @@ class NthStair
 		int res=countWays(n);
 		System.out.print(res);
 	}
+
 }
