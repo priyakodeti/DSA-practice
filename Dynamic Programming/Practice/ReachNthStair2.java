@@ -1,3 +1,5 @@
+//Problem: Count ways to reach nth stair with 1 or 2 or 3 steps using Memoization 
+
 import java.util.*;
 class ReachNthStair2
 {
@@ -19,4 +21,5 @@ class ReachNthStair2
 		int res=countWays(n);
 		System.out.print(res);
 	}
+
 }
