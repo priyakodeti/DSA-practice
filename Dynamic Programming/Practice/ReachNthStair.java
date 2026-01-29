@@ -1,3 +1,5 @@
+//Problem: Count ways to reach nth stair with 1 or 2 steps using Tabulation
+
 import java.util.*;
 class ReachNthStair
 {
@@ -19,4 +21,5 @@ class ReachNthStair
 		int res=countWays(n);
 		System.out.print(res);
 	}
+
 }
