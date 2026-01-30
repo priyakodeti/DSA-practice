@@ -1,0 +1,22 @@
+class Solution {
+    public static int count(String s1,String s2,int m,int n)
+    {
+        if(m==0 || n==0)
+            return 0;
+       
+        else if(s1.charAt(m-1)==s2.charAt(n-1))
+            return 1+count(s1,s2,m-1,n-1);
+        else
+        {
+            int a=count(s1,s2,m-1,n);
+            int b=count(s1,s2,m,n-1);
+            return Math.max(a,b);
+        }
+       
+    }
+    public int longestCommonSubsequence(String text1, String text2) {
+        int m=text1.length();
+        int n=text2.length();
+        return count(text1,text2,m,n);
+    }
+}
